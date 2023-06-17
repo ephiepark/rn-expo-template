@@ -9,7 +9,6 @@ import { googleConfig } from "../../Google/googleConfig";
 import { withFirebaseApi, WithFirebaseApiProps } from '../../Firebase';
 
 const LoginBase = (props: {} & WithFirebaseApiProps) => {
-  
   const [request, response, promptAsync] = Google.useAuthRequest({
     expoClientId: googleConfig.expoClientId,
   });
@@ -24,6 +23,7 @@ const LoginBase = (props: {} & WithFirebaseApiProps) => {
     <View style={styles.container}>
       <Text>Open up App.js to start working on your app!</Text>
       <Button title="Google Login" onPress={() => { promptAsync(); }} />
+      <Button title="Sign out" onPress={() => { props.firebaseApi.signOut(); }} />
       <StatusBar style="auto" />
     </View>
   );
