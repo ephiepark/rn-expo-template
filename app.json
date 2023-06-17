@@ -25,6 +25,13 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "scheme": "yourscheme",
+    "extra": {
+      "eas": {
+        "projectId": "651042f5-c718-4bcc-b5ff-19d8c85869d6"
+      }
+    },
+    "owner": "ephiepark"
   }
 }

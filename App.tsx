@@ -1,20 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import Login from './src/components/Login';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+import * as WebBrowser from 'expo-web-browser';
+import { withFirebaseApi, FirebaseContext, FirebaseApi } from './src/Firebase';
+
+WebBrowser.maybeCompleteAuthSession();
+
+const AppBase = () => {
+  return <Login />;
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const App = withFirebaseApi(AppBase);
+
+export default () => {
+  return (
+    <FirebaseContext.Provider value={new FirebaseApi()}>
+      <App />
+    </FirebaseContext.Provider>
+  );
+}
